@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Fizz Chatroom</title>
+    <script>
+        var socket;
+        function hehe() {
+            socket = new WebSocket("ws://localhost:8080/join");
+            socket.onopen = function (event) {
+
+                console.log("connected");
+                socket.send("hi");
+
+                socket.onmessage = function (event) {
+                    console.log("client rec msg", event)
+                };
+            };
+        }
+        function socketConnect() {
+            hehe();
+        }
+
+        function sendMsg() {
+            socket.send("hehe");
+        }
+    </script>
+</head>
+<body>
+<input type="button" onclick="socketConnect()" value="login">
+<input type="button" onclick="sendMsg()" value="send">
+</body>
+</html>
