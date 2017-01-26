@@ -4,3 +4,8 @@ the repository is aimed to implement a  web chat application
 >接下来会继续完善
 
 >添加了原生的前端，基本实现了聊天功能，但是还有一些BUG存在，下一版本DEBUG和完善。
+>下一步：
+>>解决用户登录的BUG
+>>前端加入react框架
+>>UI调整
+>>实现多房间聊天
