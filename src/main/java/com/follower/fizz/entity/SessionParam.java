@@ -1,0 +1,12 @@
+package com.follower.fizz.entity;
+
+/**
+ * Created by lin on 17-12-24.
+ */
+public class SessionParam {
+
+    public static final String LOGIN_SUCCESS_FLAG_KEY = "loginedFlag";
+
+    public static final String LOGIN_SUCCESS_FLAG_VALUE = "ok";
+
+}
