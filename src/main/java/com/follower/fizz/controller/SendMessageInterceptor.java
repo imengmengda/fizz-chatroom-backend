@@ -37,7 +37,6 @@ public class SendMessageInterceptor implements HandlerInterceptor {
             return true;
         }
 
-        return false;
     }
 
     public void postHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o, ModelAndView modelAndView) throws Exception {
