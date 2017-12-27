@@ -1,5 +1,5 @@
-it will be a web chat app powered by python and django
+it will be a web chat app powered by java
 
-backend: django,django-rest
+backend: java spring hibernate websocket
 
 frontend: vue.js bootstrap

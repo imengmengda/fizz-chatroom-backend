@@ -9,4 +9,6 @@ public class SessionParam {
 
     public static final String LOGIN_SUCCESS_FLAG_VALUE = "ok";
 
+    public static final String USER_ID_KEY = "userId";
+
 }
