@@ -1,5 +1,6 @@
 package com.follower.fizz.service.impl;
 
+import com.follower.fizz.entity.SendMessageStatus;
 import com.follower.fizz.service.ISendChatMessageService;
 import org.springframework.stereotype.Service;
 
@@ -9,5 +10,9 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class SendChatMessageService implements ISendChatMessageService{
+
+    public SendMessageStatus sendMessage(int userId, int roomID) {
+        return null; //TODO
+    }
 
 }

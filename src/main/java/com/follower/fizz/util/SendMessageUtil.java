@@ -18,10 +18,15 @@ public final class SendMessageUtil {
         ObjectMapper objectMapper = new ObjectMapper();
 
         String respnseStr = null;
-        try {
-            respnseStr = objectMapper.writeValueAsString(object);
-        } catch (JsonProcessingException e) {
-            e.printStackTrace();
+
+        if (object.getClass().equals(String.class)) {
+            respnseStr = (String)object;
+        } else {
+            try {
+                respnseStr = objectMapper.writeValueAsString(object);
+            } catch (JsonProcessingException e) {
+                e.printStackTrace();
+            }
         }
 
         httpResponse.setCharacterEncoding("UTF-8");

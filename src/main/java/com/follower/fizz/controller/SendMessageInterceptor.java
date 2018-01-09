@@ -4,6 +4,7 @@ import com.follower.fizz.entity.AuthStatusMessage;
 import com.follower.fizz.entity.SendMessageStatus;
 import com.follower.fizz.entity.SessionParam;
 import com.follower.fizz.service.ICheckSendMessageAuthService;
+import com.follower.fizz.service.basic_service.IUserInRoomService;
 import com.follower.fizz.util.SendMessageUtil;
 import org.omg.PortableInterceptor.Interceptor;
 import org.springframework.util.StringUtils;
@@ -19,8 +20,8 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class SendMessageInterceptor implements HandlerInterceptor {
 
-    @Resource(name = "checkSendMessageAuthService")
-    private ICheckSendMessageAuthService iCheckSendMessageAuthService;
+    @Resource(name = "userInRoomService")
+    private IUserInRoomService iUserInRoomService;
 
     private static final String ROOMID_PARAM_STRING = "roomId";
 
@@ -28,16 +29,15 @@ public class SendMessageInterceptor implements HandlerInterceptor {
         int roomId = Integer.parseInt(httpServletRequest.getParameter(ROOMID_PARAM_STRING));
         int userId = Integer.parseInt((String) httpServletRequest.getSession().getAttribute(SessionParam.USER_ID_KEY));
 
-        SendMessageStatus checkResult = iCheckSendMessageAuthService.checkSendMessageAuthService(userId, roomId);
+        boolean checkResult = iUserInRoomService.isUserInRoom(userId, roomId);
 
-        if (checkResult != null) {
+        if (checkResult) { //TODO, return enum json
             SendMessageUtil.sendMessage(httpServletResponse, checkResult);
             return false;
         } else {
             return true;
         }
 
-        return false;
     }
 
     public void postHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o, ModelAndView modelAndView) throws Exception {

@@ -5,6 +5,7 @@ import java.sql.Date;
 import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.util.Arrays;
+import java.util.Set;
 
 /**
  * Created by lin on 17-12-23.
@@ -23,6 +24,7 @@ public class User {
     private Integer onlineStatus;
     private String signingMessage;
     private int userId;
+    private Set<Room> rooms;
 
     public User() {}
 
@@ -140,6 +142,18 @@ public class User {
 
     public void setUserId(int userId) {
         this.userId = userId;
+    }
+
+    @ManyToMany
+    @JoinTable(name = "room_member",
+                joinColumns = {@JoinColumn(name = "user_id")},
+                inverseJoinColumns = {@JoinColumn(name = "room_id")})
+    public Set<Room> getRooms() {
+        return rooms;
+    }
+
+    public void setRooms(Set<Room> rooms) {
+        this.rooms = rooms;
     }
 
     @Override

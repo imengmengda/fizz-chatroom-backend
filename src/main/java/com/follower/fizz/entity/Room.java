@@ -1,7 +1,9 @@
 package com.follower.fizz.entity;
 
+import javax.jws.soap.SOAPBinding;
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.Set;
 
 /**
  * Created by lin on 17-12-23.
@@ -12,6 +14,7 @@ public class Room {
     private int roomId;
     private Timestamp roomCreatedTime;
     private String roomName;
+    private Set<User> users;
 
     @Id
     @Column(name = "room_id", nullable = false)
@@ -41,6 +44,18 @@ public class Room {
 
     public void setRoomName(String roomName) {
         this.roomName = roomName;
+    }
+
+    @ManyToMany
+    @JoinTable(name = "room_member",
+            joinColumns = {@JoinColumn(name = "room_id")},
+            inverseJoinColumns = {@JoinColumn(name = "user_id")})
+    public Set<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(Set<User> users) {
+        this.users = users;
     }
 
     @Override

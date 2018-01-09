@@ -1,5 +1,6 @@
 package com.follower.fizz.controller;
 
+import com.follower.fizz.dao.impl.RoomActionDao;
 import com.follower.fizz.entity.AuthStatusMessage;
 import com.follower.fizz.entity.SessionParam;
 import com.follower.fizz.service.ILoginAccessService;
@@ -31,6 +32,8 @@ public class LoginAccessController {
     @Resource(name = "registerAccessService")
     private IRegisterAccessService registerAccessService;
 
+    @Resource(name = "roomActionDao")
+    private RoomActionDao roomActionDao;
 
     @RequestMapping("/register")
     @ResponseBody
@@ -56,4 +59,5 @@ public class LoginAccessController {
         }
         return authFailMessage.toString();
     }
+
 }

@@ -15,4 +15,5 @@ public class CheckSendMessageAuthService implements ICheckSendMessageAuthService
     public SendMessageStatus checkSendMessageAuthService(int userId, int roomId) {
         return null;
     }
+
 }
