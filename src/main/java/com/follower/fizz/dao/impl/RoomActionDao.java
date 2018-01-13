@@ -44,7 +44,10 @@ public class RoomActionDao {
 
     }
 
-    public boolean isUserInRoom(String roomName, String userName) {
-        return false; //TODO, implement
+    public boolean isUserInRoom(Room room, String userName) {
+        for (User user: room.getUsers()) {
+            if (user.getNickname().equals(userName)) return true;
+        }
+        return false;
     }
 }

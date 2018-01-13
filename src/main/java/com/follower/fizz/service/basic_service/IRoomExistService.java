@@ -10,4 +10,6 @@ public interface IRoomExistService {
 
     public boolean isRoomExist(int roomId);
 
+    public boolean isRoomExist(String roomName);
+
 }
